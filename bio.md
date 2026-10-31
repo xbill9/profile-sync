@@ -62,3 +62,7 @@ I currently hold 9 official Google Cloud certifications including the Profession
 
 - Master of Science, Computer Science, Western University, 1999
 - Honours Bachelor of Science, Computer Science, Western University, 1992
+
+## Links
+
+- Google Developers profile: <https://g.dev/xbill>
