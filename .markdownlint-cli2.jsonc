@@ -1,0 +1,12 @@
+{
+  "config": {
+    // Bios and tracker rows are long single lines by design.
+    "MD013": false,
+    // Bio sections are short label headings followed directly by text.
+    "MD022": false,
+    "MD032": false
+  },
+  "globs": ["**/*.md"],
+  // Skill files start with frontmatter and have no H1.
+  "ignores": [".claude/**"]
+}
