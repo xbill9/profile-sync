@@ -14,21 +14,19 @@ CTO and co-founder of Glitnir Ticketing. Google Developer Expert for AI and Clou
 
 ## Long
 
-I have over 30+ years of industry experience from Startups to Fortune 100 corporations as well as hands on consulting engagements.
+I have over 30 years of industry experience, from startups to Fortune 100 corporations, including hands-on consulting.
 
-I am focused on AI, Infrastructure, Cloud, and Enterprise Software.
+I focus on AI, infrastructure, cloud and enterprise software.
 
-Currently- the CTO and co-founder of Glitnir Ticketing. My previous experience includes a Chief Designer Role at IBM, and as a Principal Consultant at Cap Gemini.
+I am CTO and co-founder of Glitnir Ticketing. Earlier I was a Chief Designer at IBM and a Principal Consultant at Capgemini.
 
-I have a Master of Science degree in Computer Science from Western University. My Masters thesis covered Extensible Agent Technology and I completed graduate level courses on AI.
+I hold a Master of Science in Computer Science from Western University, where my thesis covered Extensible Agent Technology.
 
-I am in the GDE program - Google Developer Expert for Google Cloud and AI.
+I am a Google Developer Expert for AI and Cloud, a Google Cloud Ambassador and an AWS Community Builder for AI.
 
-I have a series of articles focused on Agent Technology on Medium.com:
+I hold 10 Google Cloud certifications, including Professional Agentic Architect and Professional Machine Learning Engineer.
 
-<https://medium.com/@xbill999>
-
-I currently hold 9 official Google Cloud certifications including the Professional Machine Learning Engineer along with additional certificates in Data Management and Cyber Security.
+I write about agent technology at <https://medium.com/@xbill999>
 
 ## Roles
 
