@@ -1,6 +1,6 @@
 ---
 name: profile-sync
-description: Trigger when checking, updating or rolling out public profiles from bio.md and tracker.md, including "sync my profiles", "update my bio", "check the sites", "add a site", "pull my LinkedIn", a new certification or role to publish, or naming a profile site such as LinkedIn, GitHub, dev.to, Medium, Substack, Credly, AWS Builder Center, g.dev or Advocu. Covers the per-site routes and limits, exact comparison of each field before saving, live verification and tracker updates.
+description: Trigger when checking, updating or rolling out public profiles from bio.md and tracker.md, including "sync my profiles", "update my bio", "check the sites", "add a site", "pull my LinkedIn", a new certification or role to publish, or naming a profile site such as LinkedIn, GitHub, dev.to, Medium, Substack, Credly, AWS Builder Center, g.dev, Advocu or Luma. Covers the per-site routes and limits, exact comparison of each field before saving, live verification and tracker updates.
 argument-hint: "[site]"
 ---
 

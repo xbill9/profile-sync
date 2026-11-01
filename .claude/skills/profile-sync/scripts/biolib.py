@@ -16,6 +16,7 @@ LIMITS = {
     ("Medium", "Short"): 160,
     ("Google Developers profile", "Long"): 750,
     ("AWS Builder Center", "Short"): 255,
+    ("Luma", "Short"): 140,
 }
 
 

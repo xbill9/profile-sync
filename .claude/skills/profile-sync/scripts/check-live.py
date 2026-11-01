@@ -33,6 +33,8 @@ def live_short(site, url):
     if site == "Substack":
         handle = re.search(r"/@([^/]+)", url).group(1)
         return fetch(f"https://substack.com/api/v1/user/{urllib.parse.quote(handle)}/public_profile").get("bio")
+    if site == "Luma":
+        return fetch("https://api.lu.ma/user/profile?username=" + url.rstrip("/").rsplit("/", 1)[1])["user"].get("bio_short")
     return None
 
 

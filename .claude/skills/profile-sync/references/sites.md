@@ -70,6 +70,16 @@ Use an API when one can do the job. A site's read route and write route can diff
 - The page displays the login email. Keep it out of the repo.
 - Verify: member page, after clicking Read more.
 
+## Luma
+
+- Measured 2026-11-01.
+- Route: Chrome, `https://luma.com/settings`.
+- Field: textarea with the placeholder "Share a little about your background and interests.", labelled Bio, 140 characters. It has no id or name, so find it by placeholder.
+- Save: "Save Changes", below Social Links, above the private account fields.
+- The page displays the login email and phone number. Keep them out of the repo.
+- The form's username is empty, so the public profile URL carries the user id. A username would change the URL in the tracker.
+- Verify: `check-live.py Luma`, which reads `bio_short` from `https://api.lu.ma/user/profile?username=<user id>`.
+
 ## Google Skills
 
 - Formerly Skills Boost. Account page: `https://www.skills.google/my_account/profile`. It has no bio field, only language and a games name.
