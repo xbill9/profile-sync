@@ -10,4 +10,4 @@
 | AWS Builder Center | TBD | Short | none | none | Unverified | |
 | Google Developers profile | <https://g.dev/xbill> | Short | none | none | Unverified | |
 | Google Cloud Skills Boost | TBD | Short | none | none | Unverified | |
-| Credly | <https://www.credly.com/users/xbill> | Long | none | 2026-10-31 | Unverified | Summary still says 20+ years and 9 certifications; 600-character limit, so Long needs a trimmed version |
+| Credly | <https://www.credly.com/users/xbill> | Long | 2026-10-31 | 2026-10-31 | Current | 600-character limit: Long joined into one paragraph, without the focus and Medium lines, certification line shortened |
