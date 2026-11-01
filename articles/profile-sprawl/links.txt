@@ -2,6 +2,6 @@ devto-gde = https://dev.to/gde/profile-sprawl-solving-a-problem-you-didnt-know-y
 devto-aws = https://dev.to/aws-builders/profile-sprawl-solving-a-problem-you-didnt-know-you-had-3gi9
 builder = https://builder.aws.com/content/3LVfjJ6h9jeYUcR8NxhE2NcAXU6/profile-sprawl-solving-a-problem-you-didnt-know-you-had
 medium = https://xbill999.medium.com/profile-sprawl-solving-a-problem-you-didnt-know-you-had-ef937448c148
-substack = PENDING
+substack = https://xbill9.substack.com/p/profile-sprawl-solving-a-problem
 repo = https://github.com/xbill9/profile-sync
 linkedin = https://www.linkedin.com/feed/update/urn:li:activity:7522673111377301505/
