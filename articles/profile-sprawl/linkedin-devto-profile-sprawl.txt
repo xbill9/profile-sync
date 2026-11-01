@@ -1,3 +1,5 @@
+Profile Drift- solving the problem you didn't know you had!
+
 Every profile you own is a copy of your bio, and copies drift.
 
 Every public profile you own says something slightly different about you. A step by step guide to treating your bio as source code, with one file, one tracker and an agent skill that checks the live sites.

@@ -4,3 +4,4 @@ builder = PENDING
 medium = PENDING
 substack = PENDING
 repo = https://github.com/xbill9/profile-sync
+linkedin = https://www.linkedin.com/feed/update/urn:li:activity:7522673111377301505/
