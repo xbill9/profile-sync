@@ -11,3 +11,5 @@ Tracks one person's public profiles across sites. [Design doc](https://claude.ai
 - Keep `bio.md` site-neutral: plain Markdown, no site-specific syntax.
 - This repo is public. Never commit private email addresses, phone numbers, login details or tokens.
 - Profile edits go through Chrome in the user's logged-in session. Confirm before each save, since a save is public immediately.
+- The `profile-sync` skill in `.claude/skills/profile-sync/` is the workflow. After changing `bio.md`, `tracker.md` or the skill, run its `scripts/preflight.py`, `scripts/check-live.py` and `python3 -m unittest discover -s tests`.
+- `bio.md` has `Short`, `Summary` (600 characters or fewer) and `Long`. Add a length variant as a section, never a per-site copy.

@@ -12,6 +12,10 @@ CTO @ Glitnir Ticketing | GDE AI+Cloud🥇| AWS Community Builder AI  |  Google 
 
 CTO and co-founder of Glitnir Ticketing. Google Developer Expert for AI and Cloud, Google Cloud Ambassador and AWS Community Builder.
 
+## Summary
+
+I have over 30 years of industry experience, from startups to Fortune 100 corporations, including hands-on consulting. I am CTO and co-founder of Glitnir Ticketing. Earlier I was a Chief Designer at IBM and a Principal Consultant at Capgemini. I hold a Master of Science in Computer Science from Western University, where my thesis covered Extensible Agent Technology. I am a Google Developer Expert for AI and Cloud, a Google Cloud Ambassador and an AWS Community Builder for AI. I hold 10 Google Cloud certifications, including Professional Agentic Architect.
+
 ## Long
 
 I have over 30 years of industry experience, from startups to Fortune 100 corporations, including hands-on consulting.
