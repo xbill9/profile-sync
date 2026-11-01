@@ -78,6 +78,8 @@ def check(version, sections, header, rows, today=None):
                 if rx.search(cell):
                     fails.append(f"tracker.md: {site} contains a possible {label}")
         for name in sections_used(row):
+            if name == "none":
+                continue
             if name not in sections:
                 fails.append(f"tracker.md: {site} uses section {name}, which bio.md lacks")
             limit = LIMITS.get((site, name))

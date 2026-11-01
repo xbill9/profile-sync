@@ -38,7 +38,7 @@ Read `references/sites.md` before touching a site. It holds the route, field, li
    - Use the API where it can write. Otherwise use Chrome in a new tab.
    - Scroll to the field with JS, focus it, and confirm `document.activeElement` before any typing.
    - Select the old text and type the payload.
-   - Compare the field to `payload.py --js`. Save only on an exact match. If the text does not fit, add a shorter section to `bio.md` built only from existing sentences, and use that.
+   - Compare the field to `payload.py --js`. Save only on an exact match. If the text does not fit, use the longest existing section that fits. If none fits, add a shorter section to `bio.md` built only from existing sentences.
    - Read the save control's position after scrolling. Positions from an earlier screenshot are stale.
    - Decline any share or announcement prompt the user did not ask for.
 6. After each save, reload and compare the live text. Record `Current`, the synced version and the check date only then. If a login, review queue or limit stops the update, mark `Blocked` and explain in Notes.

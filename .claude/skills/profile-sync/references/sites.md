@@ -46,25 +46,31 @@ Use an API when one can do the job. A site's read route and write route can diff
 
 ## Medium
 
-- Route: Chrome. Not yet edited.
-- Bio: `meta[name=description]` on the profile page. About: `https://medium.com/@xbill999/about`.
+- Route: Chrome.
+- Short bio: `https://medium.com/me/settings/account`, Profile information opens a dialog with a textarea, 160 characters. Its Save position shifts with the window height, so read it just before clicking.
+- About: `https://medium.com/@xbill999/about`, Edit button below the text opens a contenteditable editor. A newline starts a paragraph.
+- Verify: read the About page and the profile sidebar.
 
 ## Google Developers profile
 
-- Route: Chrome. Not yet edited. `g.dev/xbill` redirects to `me.developers.google.com/u/xbill`.
-- Title and summary are separate fields.
+- Route: Chrome. `g.dev/xbill` redirects to `me.developers.google.com/u/xbill`. Edit profile opens a dialog.
+- Bio: textarea, 750 characters.
+- Title: a fixed list with no CTO option. It stays Architect.
+- Verify: reload the profile and compare page text.
 
 ## AWS Builder Center
 
-- Route: Chrome, as in the publishing kit. Not yet edited. Profile: `https://builder.aws.com/community/@xbill9`.
-- Tagline and About are separate fields.
+- Route: Chrome, as in the publishing kit. Edit from `https://builder.aws.com/profile`, not the public URL, which shows a Follow button and no edit controls. Edit about section opens a textarea, 255 characters, and Save stays disabled over the limit.
+- Text: Tagline stays as the site's tagline; Short goes in About.
+- Verify: `https://builder.aws.com/community/@xbill9`.
 
 ## Advocu
 
-- Route: Chrome. Not yet edited.
+- Route: Chrome. From the member page, the menu beside the name leads to `/settings/user-profile/<id>/about`. Biography is a contenteditable editor; Save changes is at the top right.
 - The page displays the login email. Keep it out of the repo.
+- Verify: member page, after clicking Read more.
 
 ## Google Skills
 
-- Formerly Skills Boost. Account page: `https://www.skills.google/my_account/profile`.
-- The public profile link returned a 500 error on 2026-10-31.
+- Formerly Skills Boost. Account page: `https://www.skills.google/my_account/profile`. It has no bio field, only language and a games name.
+- The public profile link returns a 500 error and then navigates back, so it cannot be read.

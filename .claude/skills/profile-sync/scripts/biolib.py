@@ -13,6 +13,9 @@ LIMITS = {
     ("Credly", "Summary"): 600,
     ("dev.to", "Short"): 200,
     ("LinkedIn", "Long"): 2600,
+    ("Medium", "Short"): 160,
+    ("Google Developers profile", "Long"): 750,
+    ("AWS Builder Center", "Short"): 255,
 }
 
 
