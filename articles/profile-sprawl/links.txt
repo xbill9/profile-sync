@@ -1,0 +1,6 @@
+devto-gde = https://dev.to/gde/profile-sprawl-solving-a-problem-you-didnt-know-you-had-19k5
+devto-aws = https://dev.to/aws-builders/profile-sprawl-solving-a-problem-you-didnt-know-you-had-3gi9
+builder = PENDING
+medium = PENDING
+substack = PENDING
+repo = https://github.com/xbill9/profile-sync

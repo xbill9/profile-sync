@@ -1,0 +1,14 @@
+Every profile you own is a copy of your bio, and copies drift.
+
+Every public profile you own says something slightly different about you. A step by step guide to treating your bio as source code, with one file, one tracker and an agent skill that checks the live sites.
+
+What is in it:
+
+- 🟢 9 of the 10 sites are Current, each confirmed on its live page
+- 🟢 The certification count is computed from a list, so the headline and the About can no longer disagree
+- 🟢 18 tests keep each failure beside a passing case
+- ❌ 5 sites said 9 certifications the day after a tenth was issued, and 3 said 20+ years
+
+dev.to (Google Developer Experts): https://dev.to/gde/profile-sprawl-solving-a-problem-you-didnt-know-you-had-19k5
+dev.to (AWS Community Builders): https://dev.to/aws-builders/profile-sprawl-solving-a-problem-you-didnt-know-you-had-3gi9
+Source: https://github.com/xbill9/profile-sync
