@@ -66,3 +66,4 @@ I currently hold 9 official Google Cloud certifications including the Profession
 ## Links
 
 - Google Developers profile: <https://g.dev/xbill>
+- Credly: <https://www.credly.com/users/xbill>
