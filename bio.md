@@ -8,6 +8,10 @@ version: 2026-10-31
 
 CTO @ Glitnir Ticketing | GDE AI+Cloud🥇| AWS Community Builder AI  |  Google Cloud Ambassador | Professional Agentic Architect | 10x Google Cloud Certified
 
+## Tagline
+
+Making the Impossible - Possible!
+
 ## Short
 
 CTO and co-founder of Glitnir Ticketing. Google Developer Expert for AI and Cloud, Google Cloud Ambassador and AWS Community Builder.

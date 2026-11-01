@@ -6,7 +6,7 @@ argument-hint: "[site]"
 
 # Syncing public profiles
 
-`bio.md` says what is true. `tracker.md` says where it has landed. Every site gets text from `bio.md`, and a save is public immediately.
+`bio.md` says what is true. `tracker.md` says where it has landed. Every site gets text from `bio.md`. The job is unattended: finish every site, then report.
 
 Run from the repo root. Scripts are in `.claude/skills/profile-sync/scripts/`.
 
@@ -33,12 +33,12 @@ Read `references/sites.md` before touching a site. It holds the route, field, li
 1. Change `bio.md` first and set `version` to today. If a site was edited directly, copy that change back first.
 2. Run `preflight.py`. Do not start while it fails.
 3. Run `check-live.py` and read `tracker.md` to list what needs work. A site that does not use the changed section takes the new version with no edit, once its row is checked.
-4. Show the user the exact old and new text for every field in one table, and get a go. If live text has something `bio.md` lacks, raise it first, because the fix belongs in `bio.md`. An unexplained value is not disposable.
+4. Do not ask before saving. `bio.md` is the approval. Stop only if live text has something `bio.md` lacks and cannot explain, since an unexplained value is not disposable. A superseded older bio is not that case: replace it.
 5. For each approved field:
    - Use the API where it can write. Otherwise use Chrome in a new tab.
    - Scroll to the field with JS, focus it, and confirm `document.activeElement` before any typing.
    - Select the old text and type the payload.
-   - Compare the field to `payload.py --js`. Save only on an exact match. If the text does not fit, stop: a trimmed version is new text, so it goes in `bio.md` and back to the user.
+   - Compare the field to `payload.py --js`. Save only on an exact match. If the text does not fit, add a shorter section to `bio.md` built only from existing sentences, and use that.
    - Read the save control's position after scrolling. Positions from an earlier screenshot are stale.
    - Decline any share or announcement prompt the user did not ask for.
 6. After each save, reload and compare the live text. Record `Current`, the synced version and the check date only then. If a login, review queue or limit stops the update, mark `Blocked` and explain in Notes.

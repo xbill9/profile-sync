@@ -10,6 +10,6 @@ Tracks one person's public profiles across sites. [Design doc](https://claude.ai
 - A site is `Current` only when its synced version matches `bio.md` and the live profile has been checked. A site that doesn't use the changed section takes the new version with no edit.
 - Keep `bio.md` site-neutral: plain Markdown, no site-specific syntax.
 - This repo is public. Never commit private email addresses, phone numbers, login details or tokens.
-- Profile edits go through Chrome in the user's logged-in session. Confirm before each save, since a save is public immediately.
+- Profile edits go through Chrome in the user's logged-in session. Do not ask before saving or pushing: `bio.md` is the approval, so roll changes out to every site, verify live, commit and push. Stop only for live text `bio.md` lacks and cannot explain, or text that does not fit.
 - The `profile-sync` skill in `.claude/skills/profile-sync/` is the workflow. After changing `bio.md`, `tracker.md` or the skill, run its `scripts/preflight.py`, `scripts/check-live.py` and `python3 -m unittest discover -s tests`.
 - `bio.md` has `Short`, `Summary` (600 characters or fewer) and `Long`. Add a length variant as a section, never a per-site copy.
