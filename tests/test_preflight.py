@@ -7,7 +7,7 @@ import unittest
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / ".claude/skills/profile-sync/scripts"))
 
 from biolib import COLUMNS, plain
-from preflight import check
+from preflight import check, check_identity
 
 TODAY = "2026-10-31"
 
@@ -98,6 +98,38 @@ class Private(unittest.TestCase):
 
     def test_phone_in_bio_fails(self):
         self.assertTrue(run(sections(Roles="- CTO, +1 212 555 0100")))
+
+
+class Identity(unittest.TestCase):
+    def identity(self, **site):
+        base = {"username": "xbill9", "avatar": "default"}
+        return {"usernames": ["xbill", "xbill9"], "avatar": "avatar/profile.jpeg", "sites": {"GitHub": {**base, **site}}}
+
+    def test_handle_on_the_list_and_in_the_url_passes(self):
+        self.assertEqual(check_identity(self.identity(), [row()]), [])
+
+    def test_handle_for_medium_style_url_passes(self):
+        identity = {"usernames": ["xbill999"], "avatar": "avatar/profile.jpeg",
+                    "sites": {"Medium": {"username": "xbill999", "avatar": "default"}}}
+        self.assertEqual(check_identity(identity, [row(Site="Medium", **{"Profile URL": "<https://medium.com/@xbill999>"})]), [])
+
+    def test_id_url_with_no_handle_passes(self):
+        self.assertEqual(check_identity(self.identity(username=""), [row(**{"Profile URL": "<https://x.test/m/66ed>"})]), [])
+
+    def test_handle_off_the_list_fails(self):
+        self.assertTrue(check_identity(self.identity(username="other"), [row(**{"Profile URL": "<https://github.com/other>"})]))
+
+    def test_handle_missing_from_url_fails(self):
+        self.assertTrue(check_identity(self.identity(), [row(**{"Profile URL": "<https://github.com/xbill>"})]))
+
+    def test_tracker_row_with_no_entry_fails(self):
+        self.assertTrue(check_identity(self.identity(), [row(), row(Site="Luma")]))
+
+    def test_entry_with_no_tracker_row_fails(self):
+        self.assertTrue(check_identity(self.identity(), []))
+
+    def test_missing_picture_fails(self):
+        self.assertTrue(check_identity({**self.identity(), "avatar": "avatar/none.jpeg"}, [row()]))
 
 
 class Bio(unittest.TestCase):

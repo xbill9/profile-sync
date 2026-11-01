@@ -76,6 +76,7 @@ Use an API when one can do the job. A site's read route and write route can diff
 - Route: Chrome, `https://luma.com/settings`.
 - Field: textarea with the placeholder "Share a little about your background and interests.", labelled Bio, 140 characters. It has no id or name, so find it by placeholder.
 - Save: "Save Changes", below Social Links, above the private account fields.
+- Picture: hidden file input in `.avatar-wrapper`, accepts JPEG, PNG, GIF and WebP. Upload saves with no Save Changes click.
 - The page displays the login email and phone number. Keep them out of the repo.
 - Username: `xbill`, 15 characters at most. The public URL is `https://luma.com/user/xbill`; `https://luma.com/xbill` returns 404. The user id URL still works.
 - Verify: `check-live.py Luma`, which reads `bio_short` from `https://api.lu.ma/user/profile?username=xbill`.

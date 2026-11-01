@@ -15,6 +15,7 @@ python3 .claude/skills/profile-sync/scripts/preflight.py    # bio.md and tracker
 python3 .claude/skills/profile-sync/scripts/check-live.py   # live text from every site with a public source
 python3 .claude/skills/profile-sync/scripts/payload.py <site> [section]   # the exact text for a site
 python3 .claude/skills/profile-sync/scripts/payload.py <site> --js        # JS that compares a field to that text
+python3 .claude/skills/profile-sync/scripts/make-avatar.py  # upload sizes of the default picture; needs Pillow
 python3 -m unittest discover -s tests                       # the checks themselves
 ```
 
@@ -46,11 +47,12 @@ Read `references/sites.md` before touching a site. It holds the route, field, li
 
 ## Add a site
 
-Get the public profile URL, since dashboards are private. Read the live text, add a row with `Unverified`, add a section to `references/sites.md`, and add any form limit to `LIMITS` in `biolib.py`. A site with a public read route goes in `live_short()` in `check-live.py`.
+Claim the first free handle from `usernames` in `identity.toml`, trying each in order, and upload `avatar/avatar-800.jpg` where the site still shows a stock picture. Get the public profile URL, since dashboards are private. Read the live text, add a row with `Unverified`, add the site to `identity.toml`, add a section to `references/sites.md`, and add any form limit to `LIMITS` in `biolib.py`. A site with a public read route goes in `live_short()` in `check-live.py`.
 
 ## Rules
 
 - This repo is public. Never commit a private email address, phone number, login detail or token. `preflight.py` scans for the first two.
+- Renaming a handle on an existing site can break its links, so a site keeps the handle it holds unless the user asks.
 - Keep `bio.md` site-neutral. Length variants are sections; per-site copies are not.
 - Do not change a site's text when the user asked only for a check.
 - Every new failure gets a check in `preflight.py` with a test and a passing control in `tests/`, or a line in `references/sites.md`.

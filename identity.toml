@@ -1,0 +1,53 @@
+# Handle and picture for every site in tracker.md.
+
+# Preference order. A new site takes the first one that is free.
+usernames = ["xbill", "xbill9", "xbill99", "xbill999"]
+
+# Default picture; make-avatar.py builds the upload sizes beside it.
+avatar = "avatar/profile.jpeg"
+
+# username: the handle held on that site, or "" where the URL carries an id.
+# avatar: "default" once the live page was seen showing the picture, else "unknown".
+[sites.LinkedIn]
+username = "xbill"
+avatar = "default"
+
+[sites.GitHub]
+username = "xbill9"
+avatar = "default"
+
+[sites.Medium]
+username = "xbill999"
+avatar = "default"
+
+[sites."dev.to"]
+username = "xbill"
+avatar = "default"
+
+[sites.Substack]
+username = "xbill99"
+avatar = "default"
+
+[sites."AWS Builder Center"]
+username = "xbill9"
+avatar = "default"
+
+[sites."Google Developers profile"]
+username = "xbill"
+avatar = "default"
+
+[sites."Google Cloud Skills Boost"]
+username = ""
+avatar = "unknown"
+
+[sites.Credly]
+username = "xbill"
+avatar = "default"
+
+[sites.Advocu]
+username = ""
+avatar = "default"
+
+[sites.Luma]
+username = "xbill"
+avatar = "default"

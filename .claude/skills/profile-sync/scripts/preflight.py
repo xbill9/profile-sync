@@ -16,9 +16,11 @@ from biolib import (
     COLUMNS,
     LIMITS,
     REQUIRED,
+    ROOT,
     STATUSES,
     plain,
     read_bio,
+    read_identity,
     read_tracker,
     sections_used,
     url_of,
@@ -27,6 +29,31 @@ from biolib import (
 EMAIL = re.compile(r"(?<![/\w.-])[\w.+-]+@[\w-]+\.[\w.-]+")
 PHONE = re.compile(r"\+\d[\d ().-]{7,}\d|\(\d{3}\) ?\d{3}[ .-]\d{4}|(?<![\w/-])\d{3}[ .-]\d{3}[ .-]\d{4}(?![\w/-])")
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def check_identity(identity, rows):
+    """Return failures for identity.toml: one entry per tracker row, each handle on the list and in the URL."""
+    fails = []
+    preferred = identity.get("usernames", [])
+    sites = identity.get("sites", {})
+    if not (ROOT / identity.get("avatar", "missing")).is_file():
+        fails.append(f"identity.toml: avatar {identity.get('avatar')!r} is not a file")
+    for row in rows:
+        site = row.get("Site", "?")
+        entry = sites.get(site)
+        if entry is None:
+            fails.append(f"identity.toml: no entry for {site}")
+            continue
+        name = entry.get("username", "")
+        if name and name not in preferred:
+            fails.append(f"identity.toml: {site} username {name!r} is not in usernames")
+        if name and not re.search(rf"[/@]{re.escape(name)}/?$", url_of(row)):
+            fails.append(f"identity.toml: {site} username {name!r} is not in {url_of(row)}")
+        if entry.get("avatar") not in ("default", "unknown"):
+            fails.append(f"identity.toml: {site} has avatar {entry.get('avatar')!r}")
+    for site in sites.keys() - {r.get("Site") for r in rows}:
+        fails.append(f"identity.toml: {site} has no tracker row")
+    return fails
 
 
 def check(version, sections, header, rows, today=None):
@@ -104,7 +131,7 @@ def main():
     args = ap.parse_args()
     version, sections = read_bio(args.bio)
     header, rows = read_tracker(args.tracker)
-    fails = check(version, sections, header, rows)
+    fails = check(version, sections, header, rows) + check_identity(read_identity(), rows)
     for f in fails:
         print(f"  FAIL  {f}")
     counts = {s: sum(r.get("Status") == s for r in rows) for s in sorted(STATUSES)}

@@ -3,6 +3,8 @@
 import pathlib
 import re
 
+import tomllib
+
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 STATUSES = {"Current", "Behind", "Unverified", "Blocked"}
 REQUIRED = ["Headline", "Short", "Summary", "Long", "Roles", "Community", "Certifications"]
@@ -52,6 +54,11 @@ def read_tracker(path=None):
         return [], []
     header = _cells(lines[0])
     return header, [dict(zip(header, _cells(ln))) for ln in lines[2:]]
+
+
+def read_identity(path=None):
+    """Return identity.toml: usernames, avatar and a sites table keyed by tracker site."""
+    return tomllib.loads(pathlib.Path(path or ROOT / "identity.toml").read_text(encoding="utf-8"))
 
 
 def sections_used(row):
