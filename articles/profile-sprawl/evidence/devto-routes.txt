@@ -1,0 +1,4 @@
+dev.to profile routes, 2026-10-31. Authenticated; PUT and PATCH sent an empty JSON body.
+GET /api/users/me 200
+PUT /api/users/me 404
+PATCH /api/users/me 404

@@ -1,0 +1,3 @@
+  FAIL  GitHub: marked Current, live text is 'stale text'
+check-live FAILED
+exit 1

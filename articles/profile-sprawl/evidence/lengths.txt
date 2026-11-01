@@ -1,0 +1,11 @@
+Tagline 33
+Short 133
+Summary 561
+Long 735
+certifications_google_cloud 10
+Medium Short limit 160
+dev.to Short limit 200
+AWS Builder Center Short limit 255
+Credly Summary limit 600
+Google Developers profile Long limit 750
+LinkedIn Long limit 2600

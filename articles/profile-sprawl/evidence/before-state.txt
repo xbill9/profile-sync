@@ -1,0 +1,21 @@
+Public profile text as read on 2026-10-31, before any edit in the rollout.
+Source: each site's live page or public API, read in the logged-in browser or with curl.
+
+site=LinkedIn headline=10x Google Cloud Certified about_certifications=9 about_years=over 30+
+site=Medium bio=9x Google Cloud Certified about_certifications=9 about_years=20+
+site=Google Developers profile about_certifications=9 about_years=20+ title=Architect
+site=Credly about_certifications=9 about_years=20+
+site=Advocu about_certifications=9
+site=AWS Builder Center tagline=Making the Impossible - Possible! credentials_in_about=0
+site=dev.to summary=Master of MCP and herding cats
+site=GitHub bio=an unexplained numeric string
+site=Substack bio=empty about=platform default text
+site=Google Skills bio=no field public_profile=HTTP 500
+
+Certification record: Credly badge issued 2026-10-30, expires 2027-10-30.
+Certifications listed on LinkedIn: 56 entries, 9 unique Google Cloud certifications.
+Sites saying 9 in an About or bio: 5 (LinkedIn, Medium, Google Developers profile, Credly, Advocu).
+Sites saying 20+ years: 3 (Medium, Google Developers profile, Credly).
+
+sites_total=10 sites_current=9 sites_blocked=1
+9 of 10 sites Current per preflight.txt

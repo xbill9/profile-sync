@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Profile Sprawl: Solving a Problem You Didn't Know You Had</title>
+  <meta name="description" content="Every public profile you own says something slightly different about you. A step by step guide to treating your bio as source code, with one file, one tracker and an agent skill that checks the live sites." />
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <style>
+    body{font-family:-apple-system,'Segoe UI',Roboto,'Liberation Sans',Arial,sans-serif;
+         font-size:18px;line-height:1.58;max-width:42em;color:#242424;}
+    h1,h2,h3,h4{font-weight:700;line-height:1.25;margin-top:1.8em;}
+    h4{font-size:1.25em;}
+    img{max-width:100%;height:auto;display:block;margin:1.6em 0;}
+    pre{background:#f7f7f7;border:1px solid #e6e6e6;border-radius:4px;
+        padding:12px 14px;overflow-x:auto;font-size:14px;line-height:1.45;}
+    code{font-family:'Liberation Mono',Menlo,Consolas,monospace;}
+    :not(pre)>code{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:.9em;}
+    blockquote{border-left:3px solid #ddd;margin-left:0;padding-left:1em;color:#555;}
+    hr{border:0;border-top:1px solid #e6e6e6;margin:2.4em 0;}
+  </style>
+</head>
+<body>
+<p>This article provides a step by step guide to keeping a public web
+presence consistent across many sites. An agent skill for Claude Code is
+built that treats a bio as source code: one file holds the facts, one
+table records where it has landed, and scripts read the live sites to
+confirm it.</p>
+<figure><img src="https://raw.githubusercontent.com/xbill9/profile-sync/main/articles/profile-sprawl/medium/img/cover.b434d7ab.jpg" alt="Profile Sprawl: Solving a Problem You Didn&#x27;t Know You Had" /></figure>
+<p><a
+href="https://github.com/xbill9/profile-sync">https://github.com/xbill9/profile-sync</a></p>
+<p><strong>Every profile you own is a copy of your bio, and copies
+drift. The fix is the one software already uses: a single source, a
+status table and a check that reads production.</strong></p>
+<hr />
+<h4 id="what-is-profile-sprawl">What Is Profile Sprawl?</h4>
+<p>A working developer collects profiles. LinkedIn, GitHub, Medium,
+dev.to, Substack, a certification wallet, a community portal, a program
+dashboard. Each one was accurate on the day you filled it in.</p>
+<p>Profile sprawl is what happens next. A new role or credential goes on
+the site you happened to have open, and the rest keep the old text. No
+site reports an error, because each one is internally fine. The
+inconsistency exists only across sites, and nobody reads them side by
+side except a recruiter, a conference organizer or a reviewer.</p>
+<hr />
+<h4 id="how-bad-could-it-be">How Bad Could It Be?</h4>
+<p>One audit of ten profiles belonging to one person, read on
+2026-10-31, the day after a new certification was issued:</p>
+<p><img src="https://raw.githubusercontent.com/xbill9/profile-sync/main/articles/profile-sprawl/medium/img/devto-profile-sprawl-table-1.png"
+alt="Table: Site, Certifications, Years of experience" /></p>
+<p>The same LinkedIn profile disagreed with itself. The headline said 10
+and the About said 9, and each line looked fine alone.</p>
+<p>The other four sites had a different problem. AWS Builder Center
+listed 0 credentials, dev.to held a tagline, GitHub held an unexplained
+string, and Substack was empty apart from the platform's default
+text.</p>
+<hr />
+<h4 id="at-this-point-you-should-have">At This Point You Should
+Have</h4>
+<ul>
+<li>A list of your public profiles and a browser where you are logged in
+to them</li>
+<li>Python 3, with no extra packages</li>
+<li><a href="https://claude.ai/code">Claude Code</a> with the Chrome
+extension, or the patience to run the same steps by hand</li>
+<li>A git repository, which can be public as long as it holds public
+text only</li>
+</ul>
+<hr />
+<h4 id="step-1--write-one-source-file">Step 1 — Write One Source
+File</h4>
+<p><code>bio.md</code> holds everything a site could need, in plain
+Markdown with no site-specific syntax. Facts are lists. Text comes in
+lengths, written from those facts.</p>
+<pre class="markdown"><code>---
+version: 2026-10-31
+---
+ 
+# Bio
+ 
+## Headline
+## Tagline
+## Short
+## Summary
+## Long
+## Roles
+## Community
+## Certifications
+## Education
+## Links</code></pre>
+<p>Three lengths cover every form measured here: Short at 133
+characters, Summary at 561 and Long at 735. A site gets its own text
+only when a limit forces it, and even then the shorter text becomes a
+section of the file. Per-site copies are how sprawl starts.</p>
+<p>The rule that keeps this working: a change starts in
+<code>bio.md</code>, never on a site. If a site was edited directly,
+that change is copied back first.</p>
+<hr />
+<h4 id="step-2--track-where-it-has-landed">Step 2 — Track Where It Has
+Landed</h4>
+<p><code>tracker.md</code> is one table with one row per site. Status
+takes one of four values.</p>
+<p><img src="https://raw.githubusercontent.com/xbill9/profile-sync/main/articles/profile-sprawl/medium/img/devto-profile-sprawl-table-2.png"
+alt="Table: Status, Meaning" /></p>
+<p>The <strong>Text used</strong> column records which sections a site
+takes. A change to Long reaches only the sites that use Long, and every
+other row moves to the new version with no edit.</p>
+<hr />
+<h4 id="step-3--make-the-computer-do-the-counting">Step 3 — Make the
+Computer Do the Counting</h4>
+<p><code>preflight.py</code> compares the two files and exits 1 on any
+disagreement. It counts the <code>Certifications</code> list and
+compares that count with every claim in the text, so a number in a
+headline can never drift from the list it summarizes.</p>
+<pre class="text"><code>$ python3 .claude/skills/profile-sync/scripts/preflight.py
+bio.md 2026-10-31, 10 sites: {&#39;Behind&#39;: 0, &#39;Blocked&#39;: 1, &#39;Current&#39;: 9, &#39;Unverified&#39;: 0}
+preflight OK</code></pre>
+<p>It also fails on a text longer than a site's form allows, a
+<code>Current</code> row with no check date, and a status outside the
+four values. The repository is public, so it scans both files for email
+addresses and phone numbers too.</p>
+<p>Arithmetic belongs in code. A model or a person can miscount a list.
+A script compares 10 with 10.</p>
+<hr />
+<h4 id="step-4--read-the-live-sites">Step 4 — Read the Live Sites</h4>
+<p>A tracker row is a claim. <code>check-live.py</code> fetches what a
+visitor gets from each site with a public source and compares it with
+<code>bio.md</code>.</p>
+<pre class="text"><code>$ python3 .claude/skills/profile-sync/scripts/check-live.py
+  SKIP  LinkedIn: browser check
+  OK    GitHub: live text matches Short
+  SKIP  Medium: browser check
+  OK    dev.to: live text matches Short
+  OK    Substack: live text matches Short
+  SKIP  AWS Builder Center: browser check
+  SKIP  Google Developers profile: browser check
+  SKIP  Google Cloud Skills Boost: browser check
+  SKIP  Credly: browser check
+  SKIP  Advocu: browser check
+check-live OK</code></pre>
+<p>A site marked <code>Current</code> that differs fails the run. A
+check that can only pass proves nothing, so the same script was run
+against a stale value to confirm it exits 1.</p>
+<hr />
+<h4 id="step-5--measure-every-form">Step 5 — Measure Every Form</h4>
+<p>Each site has its own field, limit and save button. These are read
+from the forms themselves, and they live in one reference file so the
+next run starts with them.</p>
+<p><img src="https://raw.githubusercontent.com/xbill9/profile-sync/main/articles/profile-sprawl/medium/img/devto-profile-sprawl-table-3.png"
+alt="Table: Site, Field, Limit" /></p>
+<p>A property of one site is evidence about that site only. The Long
+text at 735 characters fits 2 of these fields and fails the other 4, so
+the limits go in <code>biolib.py</code> and <code>preflight.py</code>
+enforces them before any browser opens.</p>
+<hr />
+<h4 id="mag_right-tip-reading-and-writing-are-different-routes">🔎 Tip:
+Reading and Writing Are Different Routes</h4>
+<p>dev.to has a good API, and a key reads the profile with no trouble.
+Profile fields are read-only there: <code>PUT</code> and
+<code>PATCH</code> on <code>/api/users/me</code> return 404, so the bio
+is saved through the settings page. Test both directions before planning
+a rollout around an API.</p>
+<hr />
+<h4 id="step-6--compare-before-saving">Step 6 — Compare Before
+Saving</h4>
+<p>Browser automation can drop a character while reporting success, and
+a page can show a success message for the wrong text. So each save
+follows the same order:</p>
+<ol type="1">
+<li>Scroll to the field and confirm it has focus.</li>
+<li>Select the old text and type the new text.</li>
+<li>Compare the field with the exact payload from
+<code>bio.md</code>.</li>
+<li>Read the position of the save button after scrolling.</li>
+<li>Save, reload and compare the live text.</li>
+</ol>
+<p><code>payload.py</code> supplies step 3. It prints the text for a
+site, or a small JavaScript function that compares a field with it. The
+text travels base64-encoded, which survives quotes, emoji and line
+breaks.</p>
+<pre class="text"><code>$ python3 .claude/skills/profile-sync/scripts/payload.py Credly &gt; /dev/null
+Summary: 561 characters</code></pre>
+<hr />
+<h4 id="mag_right-tip-decline-the-announcement">🔎 Tip: Decline the
+Announcement</h4>
+<p>Adding a certification on LinkedIn opens a prompt to post about it to
+your network. Updating a profile and announcing to it are separate
+decisions. The skill clicks Skip unless an announcement was
+requested.</p>
+<hr />
+<h4 id="step-7--package-it-as-a-skill">Step 7 — Package It as a
+Skill</h4>
+<p>The steps above become an agent skill, in the shape of <a
+href="https://github.com/xbill9/publishing-kit">publishing-kit</a>:</p>
+<pre class="text"><code>.claude/skills/profile-sync/
+  SKILL.md               the workflow
+  references/sites.md    route, field, limit and save button per site
+  scripts/biolib.py      reads bio.md and tracker.md
+  scripts/preflight.py   the two files agree
+  scripts/check-live.py  the live sites agree
+  scripts/payload.py     the exact text for a field
+tests/test_preflight.py  one case per failure, with a passing case beside it</code></pre>
+<p>The tests are the guard on the guards. Each failure gets a case that
+must fail and a case that must pass.</p>
+<pre class="text"><code>$ python3 -m unittest discover -s tests
+Ran 18 tests in 0.004s
+ 
+OK</code></pre>
+<p>The passing cases carry weight too. One holds a date, so a phone
+number pattern that matches <code>2026-10-31</code> fails the suite
+before it can fail every row in the tracker.</p>
+<hr />
+<h4 id="step-8--roll-out-one-change">Step 8 — Roll Out One Change</h4>
+<p>The certification that started this run shows the whole loop.</p>
+<pre class="bash"><code># 1. Edit bio.md, set version to today
+# 2. Confirm the files agree
+python3 .claude/skills/profile-sync/scripts/preflight.py
+# 3. In Claude Code, run /profile-sync to roll it out
+# 4. Confirm the live sites agree
+python3 .claude/skills/profile-sync/scripts/check-live.py</code></pre>
+<p>The skill works down the tracker, saves each field in Chrome in the
+logged-in session, reloads each page, records the check date, then
+commits and pushes. Credentials stay in the browser, so the repository
+holds public text only.</p>
+<p>Before starting, confirm the fact at its source. Here that source was
+the Credly badge, issued 2026-10-30, which settled whether 10 or 9 was
+correct.</p>
+<hr />
+<h4 id="compare-and-contrast">Compare and Contrast</h4>
+<p><img src="https://raw.githubusercontent.com/xbill9/profile-sync/main/articles/profile-sprawl/medium/img/devto-profile-sprawl-table-4.png"
+alt="Table: By hand, A notes file, profile-sync" /></p>
+<hr />
+<h4 id="so-which-one">So, Which One?</h4>
+<p>Start with Step 1 and Step 2, even with no automation. The first
+side-by-side read will show you what your profiles have been saying.</p>
+<p>Add the skill once you hold more profiles than you can check in one
+sitting. That number is small, and a new credential is a good day to
+start.</p>
+<hr />
+<h4 id="summary">Summary</h4>
+<p>The goal of this article was to keep one person's public profiles
+consistent across many sites. The key to the solution was treating a bio
+as source code, with one source file, a status table and a check that
+reads the live sites. The profile-sync results were:</p>
+<ul>
+<li>🟢 9 of the 10 sites are <code>Current</code>, each confirmed on its
+live page</li>
+<li>🟢 The certification count is computed from a list, so the headline
+and the About can no longer disagree</li>
+<li>🟢 18 tests keep each failure beside a passing case</li>
+<li>❌ 5 sites said 9 certifications the day after a tenth was issued,
+and 3 said 20+ years</li>
+<li>⚠️ Google Skills stays <code>Blocked</code>: it has no bio field and
+its public profile page returns an error</li>
+<li>⚠️ <code>check-live.py</code> reads 3 sites and only the Short text,
+so the other sites still need a browser check</li>
+</ul>
+<p>Scope: one person's ten profiles on 2026-10-31, in one Chrome
+session. Form limits were read from each site's own form on that date
+and can change. Two edits on the same day share one
+<code>version</code>, so version equality alone does not show that a
+site has the latest text, and the live comparison covers that gap.</p>
+<p>The strategy for keeping a public profile consistent was validated
+with an incremental step by step approach.</p>
+<h4 id="references">References</h4>
+<ul>
+<li><a
+href="https://github.com/xbill9/profile-sync">profile-sync</a></li>
+<li><a
+href="https://github.com/xbill9/profile-sync/blob/main/.claude/skills/profile-sync/SKILL.md">The
+skill's own instructions</a></li>
+<li><a
+href="https://github.com/xbill9/profile-sync/tree/main/articles/profile-sprawl">Evidence
+for this article</a></li>
+<li><a
+href="https://github.com/xbill9/publishing-kit">publishing-kit</a></li>
+</ul>
+</body>
+</html>

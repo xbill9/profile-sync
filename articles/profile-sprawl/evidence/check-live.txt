@@ -1,0 +1,11 @@
+  SKIP  LinkedIn: browser check
+  OK    GitHub: live text matches Short
+  SKIP  Medium: browser check
+  OK    dev.to: live text matches Short
+  OK    Substack: live text matches Short
+  SKIP  AWS Builder Center: browser check
+  SKIP  Google Developers profile: browser check
+  SKIP  Google Cloud Skills Boost: browser check
+  SKIP  Credly: browser check
+  SKIP  Advocu: browser check
+check-live OK
